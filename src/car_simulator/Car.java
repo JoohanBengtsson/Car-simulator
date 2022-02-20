@@ -16,7 +16,7 @@ public class Car extends Vehicle {
 	}
 
 	@Override
-	public void move(boolean forward) {
+	public Point move(boolean forward) {
 		int stepLength;
 		if (forward) {
 			stepLength = 1;
@@ -24,22 +24,22 @@ public class Car extends Vehicle {
 			stepLength = -1;
 		}
 
-		this.position = findNewPos(stepLength);
+		return this.position = findNewPos(stepLength);
 	}
 
 	private Point findNewPos(int stepLength) {
 		Point newPos = new Point(this.position.getX(), this.position.getY());
 		switch (this.direction) {
-		case 'N':
+		case 0:
 			newPos.updateLocation(0, stepLength);
 			break;
-		case 'E':
+		case 90:
 			newPos.updateLocation(stepLength, 0);
 			break;
-		case 'S':
+		case 180:
 			newPos.updateLocation(0, -stepLength);
 			break;
-		case 'W':
+		case 270:
 			newPos.updateLocation(-stepLength, 0);
 			break;
 		}
@@ -55,6 +55,10 @@ public class Car extends Vehicle {
 		} else if (this.direction < 0) {
 			this.direction += 360;
 		}
+	}
+	
+	public Point getPosition() {
+		return this.position;
 	}
 
 }

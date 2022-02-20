@@ -21,7 +21,7 @@ public abstract class Vehicle {
 		this.reg_nr++;
 	}
 
-	abstract void move(boolean forward);
+	abstract Point move(boolean forward);
 
 	abstract void turn(int degrees);
 }
