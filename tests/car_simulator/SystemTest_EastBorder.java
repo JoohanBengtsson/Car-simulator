@@ -1,4 +1,5 @@
 package car_simulator;
+
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -43,7 +44,7 @@ public class SystemTest_EastBorder {
 		}
 		assertFalse("The simulation was successful, when it should not. ", room.presentResults());
 	}
-	
+
 	@Test
 	public void reverseBorderTest() {
 		int lengthArgs = 10;
@@ -61,7 +62,7 @@ public class SystemTest_EastBorder {
 		}
 		assertFalse("The simulation was successful, when it should not. ", room.presentResults());
 	}
-	
+
 	@Test
 	public void outsideBorder() {
 		int lengthArgs = 10;
