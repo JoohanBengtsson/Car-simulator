@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class SystemTest_NorthBorder {
+public class SystemTest_WestBorder {
 	private String[] args;
 
 	@BeforeClass
@@ -32,9 +32,9 @@ public class SystemTest_NorthBorder {
 		args = new String[lengthArgs];
 		args[0] = "5";
 		args[1] = "5";
-		args[2] = "4";
-		args[3] = "4";
-		args[4] = "N";
+		args[2] = "0";
+		args[3] = "2";
+		args[4] = "W";
 		Room room = Simulator.interpretRoomParams(args);
 		Simulator.carCreation(args, room);
 		for (int i = 5; i < lengthArgs; i++) {
@@ -50,9 +50,9 @@ public class SystemTest_NorthBorder {
 		args = new String[lengthArgs];
 		args[0] = "5";
 		args[1] = "5";
-		args[2] = "4";
-		args[3] = "4";
-		args[4] = "S";
+		args[2] = "0";
+		args[3] = "2";
+		args[4] = "E";
 		Room room = Simulator.interpretRoomParams(args);
 		Simulator.carCreation(args, room);
 		for (int i = 5; i < lengthArgs; i++) {
@@ -68,8 +68,8 @@ public class SystemTest_NorthBorder {
 		args = new String[lengthArgs];
 		args[0] = "5";
 		args[1] = "5";
-		args[2] = "3";
-		args[3] = "10";
+		args[2] = "-5";
+		args[3] = "2";
 		args[4] = "W";
 		Room room = Simulator.interpretRoomParams(args);
 		Simulator.carCreation(args, room);

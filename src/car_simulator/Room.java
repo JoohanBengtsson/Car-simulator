@@ -33,7 +33,7 @@ public class Room {
 			if (Config.DEBUG) {
 				System.out.println("Error: Car was created outside of the room.");
 			}
-			this.resTracker.failure("The car was created outside of the room. ");
+			this.resTracker.failure("Error: Car was created outside of the room.");
 		}
 	}
 
@@ -48,7 +48,7 @@ public class Room {
 			if (Config.DEBUG) {
 				System.out.println("Error: The car hit the wall. ");
 			}
-			this.resTracker.failure("The car hit the wall. ");
+			this.resTracker.failure("Error: The car hit the wall. ");
 		}
 	}
 
@@ -98,11 +98,11 @@ public class Room {
 		return intDirection;
 	}
 
-	public Point writeCarPosition() {
+	public Point getCarPosition() {
 		return this.vehicles.get(0).getPosition();
 	}
 
-	public void presentResults() {
-		this.resTracker.presentResults(this.writeCarPosition());
+	public boolean presentResults() {
+		return this.resTracker.presentResults(this.getCarPosition());
 	}
 }

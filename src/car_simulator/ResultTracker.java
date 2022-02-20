@@ -14,8 +14,6 @@ public class ResultTracker {
 	public void failure(String reasonForFailure) {
 		this.successful = false;
 		this.reason = reasonForFailure;
-		presentResults(null);
-		System.exit(1);
 	}
 
 	public boolean presentResults(Point pointOfCar) {
