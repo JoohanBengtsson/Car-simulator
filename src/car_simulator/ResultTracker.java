@@ -14,20 +14,19 @@ public class ResultTracker {
 	public void failure(String reasonForFailure) {
 		this.successful = false;
 		this.reason = reasonForFailure;
-		presentFailure();
+		presentResults(null);
 		System.exit(1);
 	}
 
-	public  boolean presentFailure() {
-		System.err.println("The simulation failed, due to: " + this.reason);
+	public boolean presentResults(Point pointOfCar) {
+		if (this.successful) {
+			System.out.println("The simulation was successful. The car's end position was " + pointOfCar.toString());
+		} else {
+			System.err.println("The simulation failed, due to: " + this.reason);
+		}
 		return successful;
 	}
 
-	public boolean presentSuccess(Point pointOfCar) {
-		System.out.println("The simulation was successful. The car's end position was " + pointOfCar.toString());
-		return successful;
-	}
-	
 	public boolean getSuccess() {
 		return this.successful;
 	}

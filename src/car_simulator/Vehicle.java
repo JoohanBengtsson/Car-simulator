@@ -11,14 +11,15 @@ public abstract class Vehicle {
 	private int width;
 	private int length;
 	protected int direction;
-	private static int reg_nr = 1;
+	private int regNr;
+	private static int globalRegNr = 1;
 
 	public Vehicle(int width, int length, int direction) {
 		this.width = width;
 		this.length = length;
 		this.direction = direction;
-		this.reg_nr = this.reg_nr;
-		this.reg_nr++;
+		this.regNr = globalRegNr;
+		globalRegNr++;
 	}
 
 	abstract Point move(boolean forward);

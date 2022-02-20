@@ -102,7 +102,7 @@ public class Room {
 		return this.vehicles.get(0).getPosition();
 	}
 
-	public void presentSuccess() {
-		this.resTracker.presentSuccess(this.writeCarPosition());
+	public void presentResults() {
+		this.resTracker.presentResults(this.writeCarPosition());
 	}
 }

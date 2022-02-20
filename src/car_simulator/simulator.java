@@ -21,7 +21,7 @@ public class Simulator {
 			Room room = interpretRoomParams(args);
 			carCreation(args, room);
 			interpretActionCmds(args, room);
-			room.presentSuccess();
+			room.presentResults();
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.err.println("There weren't enough parameters provided, so " + e + " was received.");
 		}
