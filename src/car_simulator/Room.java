@@ -14,12 +14,14 @@ public class Room {
 	private int height;
 	private Object[][] room_spots;
 	private ArrayList<Car> vehicles;
+	private ResultTracker resTracker;
 
 	public Room(int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.room_spots = new Object[width][height];
 		this.vehicles = new ArrayList<>();
+		this.resTracker = new ResultTracker();
 	}
 
 	public void createCar(Point startPos, int direction) {
@@ -28,9 +30,10 @@ public class Room {
 		try {
 			room_spots[startPos.getX()][startPos.getY()] = newCar;
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Error: Car was created outside of the room.");
-			ResultTracker.failure("The car was created outside of the room. ");
-			return;
+			if (Config.DEBUG) {
+				System.out.println("Error: Car was created outside of the room.");
+			}
+			this.resTracker.failure("The car was created outside of the room. ");
 		}
 	}
 
@@ -42,11 +45,11 @@ public class Room {
 			Point newSpot = car.move(forward);
 			changeSpot(newSpot, currSpot);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Error: The car hit the wall. ");
-			ResultTracker.failure("The car hit the wall. ");
-			return;
+			if (Config.DEBUG) {
+				System.out.println("Error: The car hit the wall. ");
+			}
+			this.resTracker.failure("The car hit the wall. ");
 		}
-
 	}
 
 	public void changeSpot(Point newSpot, Point currSpot) {
@@ -55,6 +58,7 @@ public class Room {
 	}
 
 	public boolean interpretCommand(String cmd) {
+		cmd = cmd.toLowerCase();
 		Car car = this.vehicles.get(0);
 		boolean success = true;
 		switch (cmd) {
@@ -74,7 +78,31 @@ public class Room {
 		return success;
 	}
 	
+	public static int parseCmdDirection(String direction) {
+		direction.toLowerCase();
+		int intDirection = 0;;
+		switch (direction) {
+		case "n":
+			intDirection = 0;
+			break;
+		case "e":
+			intDirection = 90;
+			break;
+		case "s":
+			intDirection = 180;
+			break;
+		case "w":
+			intDirection = 270;
+			break;
+		}
+		return intDirection;
+	}
+
 	public Point writeCarPosition() {
 		return this.vehicles.get(0).getPosition();
+	}
+
+	public void presentSuccess() {
+		this.resTracker.presentSuccess(this.writeCarPosition());
 	}
 }

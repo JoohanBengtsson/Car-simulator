@@ -8,30 +8,27 @@ package car_simulator;
  *
  */
 public class ResultTracker {
-	private static boolean successful = true;
-	private static String reason;
-	
-	public static void failure(String reasonForFailure) {
-		successful = false;
-		reason = reasonForFailure;
-		presentResults();
-		System.exit(0);
+	private boolean successful = true;
+	private String reason;
+
+	public void failure(String reasonForFailure) {
+		this.successful = false;
+		this.reason = reasonForFailure;
+		presentFailure();
+		System.exit(1);
+	}
+
+	public  boolean presentFailure() {
+		System.err.println("The simulation failed, due to: " + this.reason);
+		return successful;
+	}
+
+	public boolean presentSuccess(Point pointOfCar) {
+		System.out.println("The simulation was successful. The car's end position was " + pointOfCar.toString());
+		return successful;
 	}
 	
-	public static void presentResults() {
-		if (successful) {
-			System.out.println("The simulation was successful. ");			
-		} else {
-			System.err.println("The simulation failed, due to: " + reason);
-		}
-		System.exit(0);
-	}	
-	
-	public static void presentResults(Point pointOfCar) {
-		if (successful) {
-			System.out.println("The simulation was successful. The car's end position was " + pointOfCar.toString());			
-		} else {
-			System.err.println("The simulation failed, due to: " + reason);
-		}
-	}	
+	public boolean getSuccess() {
+		return this.successful;
+	}
 }
