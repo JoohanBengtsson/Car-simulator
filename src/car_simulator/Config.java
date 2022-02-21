@@ -10,7 +10,8 @@ package car_simulator;
 public class Config {
 	/**
 	 * DEBUG - if true it will make the script print the car's position during every
-	 * move.
+	 * move, as well as overwriting eventual args with the purpose of making it
+	 * runnable from the IDE.
 	 */
 	public static boolean DEBUG = false;
 }
