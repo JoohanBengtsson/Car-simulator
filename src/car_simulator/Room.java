@@ -173,12 +173,55 @@ public class Room {
 	}
 
 	/**
+	 * A static function for translating String directions into Integers. Namely, it
+	 * performs the translation ["N": 0, "E": 90, "S": 180, "W": 270]
+	 * 
+	 * @param direction - the direction sourcing from the command, any of [N, E, S,
+	 *                  W].
+	 * @return the integer of how many degrees that direction is.
+	 */
+	public static String parseCmdDirection(int degrees) {
+		int intDirection = 0;
+		String heading = "";
+		boolean success = false;
+		switch (degrees) {
+		case 0:
+			heading = "N";
+			success = true;
+			break;
+		case 90:
+			heading = "E";
+			success = true;
+			break;
+		case 180:
+			heading = "S";
+			success = true;
+			break;
+		case 270:
+			heading = "W";
+			success = true;
+			break;
+		}
+		return heading;
+	}
+
+	
+	/**
 	 * Function for getting the position of the car, should it be relevant.
 	 * 
-	 * @return the Point showing the position of the car at the moment.
+	 * @return Point showing the position of the car at the moment.
 	 */
 	public Point getCarPosition() {
 		return this.vehicles.get(0).getPosition();
+	}
+	
+	/**
+	 * Function for getting the direction of the car, should it be relevant.
+	 * 
+	 * @return int showing the direction of the car at the moment.
+	 */
+	public int getCarDirection() {
+		return this.vehicles.get(0).getDirection();
 	}
 
 	/**
@@ -187,6 +230,6 @@ public class Room {
 	 * @return
 	 */
 	public boolean presentResults() {
-		return this.resTracker.presentResults(this.getCarPosition());
+		return this.resTracker.presentResults(this.vehicles.get(0));
 	}
 }

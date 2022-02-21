@@ -99,10 +99,19 @@ public class Car extends Vehicle {
 
 	/**
 	 * Function for presenting the car's current position.
+	 * 
 	 * @return Point indicating the Car's current position.
 	 */
 	public Point getPosition() {
 		return this.position;
 	}
 
+	/**
+	 * Function for presenting the vehicle's current direction.
+	 * 
+	 * @return int indicating the Car's current direction in degrees.
+	 */
+	public int getDirection() {
+		return this.direction;
+	}
 }

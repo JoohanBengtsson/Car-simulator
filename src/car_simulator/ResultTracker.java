@@ -34,9 +34,10 @@ public class ResultTracker {
 	 *                   null otherwise.
 	 * @return true or false, depending on whether the script was successful or not.
 	 */
-	public boolean presentResults(Point pointOfCar) {
+	public boolean presentResults(Car car) {
 		if (this.successful) {
-			System.out.println("The simulation was successful. The car's end position was " + pointOfCar.toString());
+			System.out.println("The simulation was successful. The car's end position was "
+					+ car.getPosition().toString() + " and direction " + Room.parseCmdDirection(car.getDirection()));
 		} else {
 			System.err.println("The simulation failed, due to: " + this.reason);
 		}

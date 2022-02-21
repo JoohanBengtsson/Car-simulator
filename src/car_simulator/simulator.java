@@ -31,7 +31,7 @@ public class Simulator {
 		if (args.length < 5) {
 			System.out.println("Not enough arguments were provided. Terminates the script");
 		}
-		
+
 		try {
 			Room room = interpretRoomParams(args);
 			carCreation(args, room);
@@ -49,13 +49,14 @@ public class Simulator {
 	 * @return the args as specified here on the form they should be from the CLI.
 	 */
 	private static String[] specifyArgsFromIde() {
-		String[] args = new String[25];
+		int lengthArgs = 20;
+		String[] args = new String[lengthArgs];
 		args[0] = "20";
 		args[1] = "20";
 		args[2] = "0";
 		args[3] = "0";
 		args[4] = "N";
-		for (int i = 5; i < 25; i++) {
+		for (int i = 5; i < lengthArgs; i++) {
 			args[i] = "F";
 		}
 		return args;

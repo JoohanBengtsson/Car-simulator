@@ -2,31 +2,10 @@ package car_simulator;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class SystemTest_Middle {
 	private String[] args;
-	private Car car;
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void middleDriveAroundTest() {
@@ -43,7 +22,6 @@ public class SystemTest_Middle {
 		// First combination of cmds and test
 		room.interpretCommand("R");
 		room.interpretCommand("F");
-		Point carPos = room.getCarPosition();
 		assertEquals("The car could not turn right and then drive forward. Instead had position: " + room.getCarPosition().toString(),
 				room.getCarPosition().toString(), "11, 10");
 
