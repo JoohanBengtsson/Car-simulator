@@ -59,6 +59,19 @@ Figure 4. The final class diagram.
 
 The goal was to preserve the basic principles of low coupling, high flexibility of the code, and I believe it was preserved, at least to a pretty high extent. 
 
+## Solution
+
+The solution is briefly described in figure 1, the initial proposal program. The overall logic is preserved, but the details have been changed ever since. The three phases remain: Setup, Simulation and The results.
+
+### 1. Setup
+The command line arguments are interpreted and are basis for how to set up the simulator. That is, it provides input to how big the room shall be, where the car is created and in what direction. In this phase, the room also setups a ResultTracker, which is a class keeping track of the results of the simulation.
+
+### 2. Simulation
+When the script has been set up, the simulation begins. The simulation consists of parsing the arguments in the Simulator. The arguments are an amount of action commands of either one of [F, B, L, R] which in the CLI should be space-separated. For each and everyone of these eventual arguments the user provides, the program interprets it and executes the command, if it is valid. Turns to left or right changes the direction of the car with either -90 or 90 degrees. Then upon the "F" or "B" command, the car takes a step forward or backwards. Since the room is a matrix, a move into the wall would raise an ArrayIndexOutOfBounds. That error is caught by a try-catch statement. If it is caught, it reports the failure to the result tracker. That is, the result tracker stores that it has failed and also stores the reason. However, if no such rule-violations occur, the result tracker has no errors to report and will thus report the simulation as a success. 
+
+### 3. Present the results
+When the simulation has interpreted all the action commands, the simulation finalizes and moves onto the result presentation, upon which it requests the result tracker to present the results. If any rule-violation has occurred, it will present a failure. If no such violations has occurred, it presents that it was a successful solution along with the end-coordinate and -direction of the car.
+
 ## How to run the script
 
 The script can be run either through an IDE or through the CLI.
