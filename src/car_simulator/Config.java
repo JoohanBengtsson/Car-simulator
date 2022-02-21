@@ -13,5 +13,5 @@ public class Config {
 	 * move, as well as overwriting eventual args with the purpose of making it
 	 * runnable from the IDE.
 	 */
-	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 }
