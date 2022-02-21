@@ -17,13 +17,13 @@ The script should be runnable form the CLI. From there, the user may provide arg
 
 ## Work process
 
-### 1. Requirement specification and data flow diagram
+### 1. Requirement specification and program flow diagram
 
-The work started by interpreting the requirements, to understand the different parts that would need to be implemented. Based upon the requirements, a data flow diagram was set up, in which one way of how the program could be implemented was demonstrated. By doing so, the needed parts of the script could be identified and the structure of the program could be planned. The data flow diagram is shown in figure 1.
+The work started by interpreting the requirements, to understand the different parts that would need to be implemented. Based upon the requirements, a flow diagram of the program was set up, in which one way of how the program could be implemented was demonstrated. By doing so, the needed parts of the script could be identified and the structure of the program could be planned. The data flow diagram is shown in figure 1.
 
 ![](imgs/Flow%20of%20script.drawio.png)
 
-Figure 1. The data flow of the script.
+Figure 1. The flow of the script.
 
 ### 2. Initial class diagram
 
@@ -37,7 +37,7 @@ With this initial setup, the thought was that the classes should be inter-indepe
 
 ### 3. Implementation
 
-Then the work to implement this program according to the data flow- and class diagrams started. Step by step, the whole program was implemented. I made sure to check the instructions repeatedly, as to not do unnecessary work. 
+Then the work to implement this program according to the flow- and class diagrams started. Step by step, the whole program was implemented. I made sure to check the instructions repeatedly, as to not do unnecessary work. 
 
 ### 4. Testing
 
