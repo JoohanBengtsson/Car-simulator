@@ -28,6 +28,10 @@ public class Simulator {
 			args = specifyArgsFromIde();
 		}
 
+		if (args.length < 5) {
+			System.out.println("Not enough arguments were provided. Terminates the script");
+		}
+		
 		try {
 			Room room = interpretRoomParams(args);
 			carCreation(args, room);

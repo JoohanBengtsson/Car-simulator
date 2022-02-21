@@ -9,3 +9,5 @@ The data flow of the script.
 ![](imgs/Class%20diagram.drawio.png)
 
 The class diagram for this script.
+
+![](imgs/Test%20scenarios.png)
