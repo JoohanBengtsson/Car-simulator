@@ -62,4 +62,22 @@ public class Point {
 	public String toString() {
 		return this.x + ", " + this.y;
 	}
+
+	/**
+	 * Method for comparing two Points, which comes down to comparing their
+	 * coordinates.
+	 * 
+	 * @param point - the point to compare with.
+	 * @return true if they had the same coordinates, false otherwise.
+	 */
+	public boolean equals(Point point) {
+		boolean success = true;
+		if (this.x != point.getX()) {
+			success = false;
+		}
+		if (this.y != point.getY()) {
+			success = false;
+		}
+		return success;
+	}
 }

@@ -40,7 +40,7 @@ public class ResultTracker {
 		} else {
 			System.err.println("The simulation failed, due to: " + this.reason);
 		}
-		return successful;
+		return this.successful;
 	}
 
 	/**

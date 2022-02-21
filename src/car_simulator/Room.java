@@ -20,8 +20,8 @@ public class Room {
 	 * were to be extended towards housing more than one vehicle. resTracker - the
 	 * ResultTracker keeping track of the success of the simulation.
 	 */
-	private int width;
-	private int height;
+	//private int width;
+	//private int height;
 	private Object[][] roomSpots;
 	private ArrayList<Car> vehicles;
 	private ResultTracker resTracker;
@@ -33,8 +33,8 @@ public class Room {
 	 * @param height - how high the room should be.
 	 */
 	public Room(int width, int height) {
-		this.width = width;
-		this.height = height;
+		//this.width = width;
+		//this.height = height;
 		this.roomSpots = new Object[width][height];
 		this.vehicles = new ArrayList<>();
 		this.resTracker = new ResultTracker();
