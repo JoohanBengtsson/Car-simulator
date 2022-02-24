@@ -87,4 +87,4 @@ The script can be run either through an IDE or through the CLI.
 1. Make sure DEBUG is set to false in Config.java.
 2. In the CLI, change directory into the highest level of this project. That is, ".../HiQ test" is where you should be.
 3. Run the command: java -jar Simulator.jar [args]
-Note: [args] is the arguments as are specified in the introduction.
+Note: [args] are the arguments as specified/described in the introduction.
