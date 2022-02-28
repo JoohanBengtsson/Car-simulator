@@ -32,7 +32,7 @@ public class UnitTest_Car {
 		int length = 1;
 		int direction = 0;
 		Point position = new Point(1, 1);
-		Car car = new Car(width, length, direction, position);
+		Car car = new Car(position, direction);
 		assertTrue("The car did not have the correct position before moving. ", car.getPosition().equals(new Point(1, 1)));
 		car.move(true);
 		assertTrue("The car did not have the correct position after moving. ", car.getPosition().equals(new Point(1, 2)));
@@ -44,7 +44,7 @@ public class UnitTest_Car {
 		int length = 1;
 		int direction = 0;
 		Point position = new Point(1, 1);
-		Car car = new Car(width, length, direction, position);
+		Car car = new Car(position, direction);
 		assertTrue("The car did not have the correct position before moving. ", car.getPosition().equals(new Point(1, 1)));
 		car.move(false);
 		assertTrue("The car did not have the correct position after moving. ", car.getPosition().equals(new Point(1, 0)));
@@ -56,7 +56,7 @@ public class UnitTest_Car {
 		int length = 1;
 		int direction = 0;
 		Point position = new Point(1, 1);
-		Car car = new Car(width, length, direction, position);
+		Car car = new Car(position, direction);
 		assertTrue("The car did not have the correct position before moving. ", car.getPosition().equals(new Point(1, 1)));
 		car.turn(90);
 		car.move(true);
@@ -81,7 +81,7 @@ public class UnitTest_Car {
 		int length = 1;
 		int direction = 0;
 		Point position = new Point(1, 1);
-		Car car = new Car(width, length, direction, position);
+		Car car = new Car(position, direction);
 		assertTrue("The car did not have the correct position before moving. ", car.getPosition().equals(new Point(1, 1)));
 		car.turn(-90);
 		car.move(true);

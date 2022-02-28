@@ -26,8 +26,8 @@ public class Car extends Vehicle {
 	 * @param position  - its initial position, represented by the class Point which
 	 *                  is a 2-dimensional location on the form (x, y)
 	 */
-	public Car(int width, int length, int direction, Point position) {
-		super(width, length, direction);
+	public Car(Point position, int direction) {
+		super(1, 1, direction);
 		this.position = position;
 	}
 

@@ -32,14 +32,10 @@ public class Simulator {
 			System.out.println("Not enough arguments were provided. Terminates the script");
 		}
 
-		try {
-			Room room = interpretRoomParams(args);
-			carCreation(args, room);
-			interpretActionCmds(args, room);
-			room.presentResults();
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.err.println("There weren't enough parameters provided, so " + e + " was received.");
-		}
+		Room room = interpretRoomParams(args);
+		carCreation(args, room);
+		interpretActionCmds(args, room);
+		room.presentResults();
 	}
 
 	/**
@@ -88,10 +84,15 @@ public class Simulator {
 	 * @param room - the room in which the car should be created.
 	 */
 	public static void carCreation(String[] args, Room room) {
-		int startPosX = Integer.parseInt(args[2]);
-		int startPosY = Integer.parseInt(args[3]);
-		int directionCar = Room.parseCmdDirection(args[4]);
-		room.createCar(new Point(startPosX, startPosY), directionCar);
+		try {
+			int startPosX = Integer.parseInt(args[2]);
+			int startPosY = Integer.parseInt(args[3]);
+			int directionCar = Room.parseCmdDirection(args[4]);
+			room.createCar(new Point(startPosX, startPosY), directionCar);
+		} catch (NumberFormatException e) {
+			System.err.println("Error, could not parse the two arguments as integers. Got " + e);
+			System.exit(1);
+		}
 	}
 
 	/**

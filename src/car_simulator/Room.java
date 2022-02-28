@@ -53,7 +53,7 @@ public class Room {
 	 *                  towards. Anyone of [N, E, S, W].
 	 */
 	public void createCar(Point startPos, int direction) {
-		Car newCar = new Car(1, 1, direction, startPos);
+		Car newCar = new Car(startPos, direction);
 		this.vehicles.add(newCar);
 		try {
 			roomSpots[startPos.getX()][startPos.getY()] = newCar;
