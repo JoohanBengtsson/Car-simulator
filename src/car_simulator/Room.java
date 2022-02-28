@@ -51,18 +51,23 @@ public class Room {
 	 * @param startPos  - the start position-Point of the Car.
 	 * @param direction - the direction in which the car should initially be headed
 	 *                  towards. Anyone of [N, E, S, W].
+	 * @return true if the car was successfully created, otherwise false.
 	 */
-	public void createCar(Point startPos, int direction) {
+	public boolean createCar(Point startPos, int direction) {
 		Car newCar = new Car(startPos, direction);
+		boolean success;
 		this.vehicles.add(newCar);
 		try {
 			roomSpots[startPos.getX()][startPos.getY()] = newCar;
+			success = true;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			if (Config.DEBUG) {
 				System.out.println("Error: Car was created outside of the room.");
 			}
 			this.resTracker.failure("Error: Car was created outside of the room.");
+			success = false;
 		}
+		return success;
 	}
 
 	/**
@@ -146,26 +151,20 @@ public class Room {
 	public static int parseCmdDirection(String direction) {
 		direction = direction.toLowerCase();
 		int intDirection = 0;
-		boolean success = false;
 		switch (direction) {
 		case "n":
 			intDirection = 0;
-			success = true;
 			break;
 		case "e":
 			intDirection = 90;
-			success = true;
 			break;
 		case "s":
 			intDirection = 180;
-			success = true;
 			break;
 		case "w":
 			intDirection = 270;
-			success = true;
 			break;
-		}
-		if (success == false) {
+		default:
 			System.out.println("Error: An incorrect direction was given. Terminates the script. ");
 			System.exit(1);
 		}
@@ -181,25 +180,19 @@ public class Room {
 	 * @return the integer of how many degrees that direction is.
 	 */
 	public static String parseCmdDirection(int degrees) {
-		int intDirection = 0;
 		String heading = "";
-		boolean success = false;
 		switch (degrees) {
 		case 0:
 			heading = "N";
-			success = true;
 			break;
 		case 90:
 			heading = "E";
-			success = true;
 			break;
 		case 180:
 			heading = "S";
-			success = true;
 			break;
 		case 270:
 			heading = "W";
-			success = true;
 			break;
 		}
 		return heading;
@@ -227,7 +220,7 @@ public class Room {
 	/**
 	 * The function for presenting the results of the simulation.
 	 * 
-	 * @return
+	 * @return true if the simulation was successful, otherwise false.
 	 */
 	public boolean presentResults() {
 		return this.resTracker.presentResults(this.vehicles.get(0));

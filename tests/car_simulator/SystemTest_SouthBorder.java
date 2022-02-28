@@ -72,7 +72,7 @@ public class SystemTest_SouthBorder {
 		args[3] = "-5";
 		args[4] = "W";
 		Room room = Simulator.interpretRoomParams(args);
-		Simulator.carCreation(args, room);
-		assertFalse("The car was created outside the room.", room.presentResults());
+		boolean success = Simulator.carCreation(args, room);
+		assertFalse("The car was created outside the room.", success);
 	}
 }

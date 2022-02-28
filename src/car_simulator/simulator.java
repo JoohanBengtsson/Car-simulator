@@ -30,11 +30,14 @@ public class Simulator {
 
 		if (args.length < 5) {
 			System.out.println("Not enough arguments were provided. Terminates the script");
+			System.exit(1);
 		}
 
 		Room room = interpretRoomParams(args);
-		carCreation(args, room);
-		interpretActionCmds(args, room);
+		boolean success = carCreation(args, room);
+		if (success) {
+			interpretActionCmds(args, room);
+		}
 		room.presentResults();
 	}
 
@@ -47,11 +50,11 @@ public class Simulator {
 	private static String[] specifyArgsFromIde() {
 		int lengthArgs = 20;
 		String[] args = new String[lengthArgs];
-		args[0] = "20";
-		args[1] = "20";
+		args[0] = "1";
+		args[1] = "1";
 		args[2] = "0";
 		args[3] = "0";
-		args[4] = "N";
+		args[4] = "w";
 		for (int i = 5; i < lengthArgs; i++) {
 			args[i] = "F";
 		}
@@ -73,6 +76,9 @@ public class Simulator {
 		} catch (NumberFormatException e) {
 			System.err.println("Error, could not parse the first two arguments as integers. Got " + e);
 			System.exit(1);
+		} catch (NegativeArraySizeException e) {
+			System.err.println("Error, a room with negative dimensions cannot be created. Terminates script. ");
+			System.exit(1);
 		}
 		return null;
 	}
@@ -82,17 +88,21 @@ public class Simulator {
 	 * 
 	 * @param args - the CLI-commands provided and are then interpreted.
 	 * @param room - the room in which the car should be created.
+	 * @return true if the car was successfully created, otherwise false.
 	 */
-	public static void carCreation(String[] args, Room room) {
+	public static boolean carCreation(String[] args, Room room) {
+		boolean success;
 		try {
 			int startPosX = Integer.parseInt(args[2]);
 			int startPosY = Integer.parseInt(args[3]);
 			int directionCar = Room.parseCmdDirection(args[4]);
-			room.createCar(new Point(startPosX, startPosY), directionCar);
+			success = room.createCar(new Point(startPosX, startPosY), directionCar);
 		} catch (NumberFormatException e) {
 			System.err.println("Error, could not parse the two arguments as integers. Got " + e);
 			System.exit(1);
+			success = false;
 		}
+		return success;
 	}
 
 	/**
